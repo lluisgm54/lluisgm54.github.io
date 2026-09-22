@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuerza Diaria — Rutina y estilo de vida saludable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #121310;
+    --bg-alt: #1B1C17;
+    --paper: #F5F2E8;
+    --accent: #CFFF4D;
+    --brick: #C4512F;
+    --muted: #8C8F80;
+    --ink: #14150F;
+    --line: rgba(245,242,232,0.14);
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+    text-transform: none;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; display: block; }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(18,19,16,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .logo{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+  }
+  .logo span{ color: var(--accent); }
+  .nav-links{
+    display: flex;
+    gap: 36px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .nav-links a:hover{ color: var(--paper); }
+  .nav-cta{
+    background: var(--paper);
+    color: var(--ink);
+    padding: 10px 22px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .nav-mobile-hide{ display:flex; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 90px 0 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .wrap{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-kicker{
+    color: var(--brick);
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: clamp(48px, 6vw, 84px);
+    color: var(--paper);
+  }
+  .hero h1 em{
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero p.lead{
+    margin-top: 26px;
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .hero-actions{
+    margin-top: 38px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .btn-primary{
+    background: var(--accent);
+    color: var(--ink);
+    padding: 15px 30px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 15px;
+    display: inline-block;
+  }
+  .btn-ghost{
+    border: 1px solid var(--line);
+    padding: 15px 26px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--paper);
+  }
+  .hero-stats{
+    margin-top: 56px;
+    display: flex;
+    gap: 48px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .hero-stats .num{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--paper);
+  }
+  .hero-stats .label{
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-top: 2px;
+  }
+
+  /* whiteboard card */
+  .board{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 30px 28px;
+    transform: rotate(2.2deg);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    position: relative;
+  }
+  .board::before{
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 34px;
+    width: 60px;
+    height: 26px;
+    background: rgba(196,81,47,0.85);
+    transform: rotate(-4deg);
+  }
+  .board-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .board-head h3{
+    font-size: 22px;
+  }
+  .board-head span{
+    font-size: 13px;
+    color: var(--brick);
+    font-weight: 700;
+  }
+  .board-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(20,21,15,0.2);
+    font-size: 15px;
+  }
+  .board-row:last-child{ border-bottom: none; }
+  .board-row .ex{ font-weight: 600; }
+  .board-row .set{ color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* ---------- SECTION HEADS ---------- */
+  section{ padding: 100px 0; }
+  .sec-alt{ background: var(--bg-alt); }
+  .sec-head{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+  .sec-head h2{
+    font-size: clamp(34px, 4vw, 52px);
+    color: var(--paper);
+  }
+  .sec-head p{
+    color: var(--muted);
+    font-size: 16.5px;
+    max-width: 42ch;
+  }
+
+  /* ---------- WEEKLY PLAN ---------- */
+  .week{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  .day{
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 20px 14px 16px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .day.rest{ opacity: 0.55; }
+  .day .d-name{
+    position: absolute;
+    top: 16px;
+    left: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .day .bar{
+    background: var(--accent);
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .day.rest .bar{ background: var(--muted); }
+  .day .focus{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--paper);
+    line-height: 1.05;
+  }
+  .day .mins{
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    padding: 56px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .pillar:last-child{ border-bottom: none; }
+  .pillar:nth-child(even) .pillar-figure{ order: 2; }
+  .pillar-num{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 900;
+    font-size: 110px;
+    color: var(--accent);
+    line-height: 0.8;
+  }
+  .pillar-num sup{
+    font-size: 28px;
+    top: -0.6em;
+    margin-left: 4px;
+    color: var(--muted);
+  }
+  .pillar h3{
+    font-size: 30px;
+    color: var(--paper);
+    margin-top: 6px;
+  }
+  .pillar p{
+    color: var(--muted);
+    margin-top: 14px;
+    max-width: 46ch;
+    font-size: 16px;
+  }
+
+  /* ---------- TESTIMONIAL ---------- */
+  .quote{
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: left;
+    border-left: 3px solid var(--brick);
+    padding-left: 32px;
+  }
+  .quote p{
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 34px);
+    color: var(--paper);
+    line-height: 1.25;
+  }
+  .quote .who{
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background: var(--brick);
+    padding: 90px 0;
+    text-align: center;
+  }
+  .cta h2{
+    color: var(--ink);
+    font-size: clamp(36px, 5vw, 60px);
+  }
+  .cta p{
+    color: rgba(20,21,15,0.75);
+    margin-top: 14px;
+    font-size: 17px;
+  }
+  .cta .btn-primary{
+    margin-top: 30px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 50px 0;
+    border-top: 1px solid var(--line);
+  }
+  footer .wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .board{ transition: transform 0.4s ease; }
+    .board:hover{ transform: rotate(0deg); }
+  }
+
+  @media (max-width: 900px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero-stats{ flex-wrap: wrap; row-gap: 24px; }
+    .sec-head{ grid-template-columns: 1fr; }
+    .week{ grid-template-columns: repeat(4, 1fr); }
+    .day{ min-height: 200px; }
+    .pillar{ grid-template-columns: 1fr; gap: 24px; }
+    .pillar:nth-child(even) .pillar-figure{ order: 0; }
+    .nav-links{ display: none; }
+  }
+
+  @media (max-width: 560px){
+    .week{ grid-template-columns: repeat(2, 1fr); }
+    .wrap{ padding: 0 20px; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">FUERZA<span>·</span>DIARIA</div>
+    <div class="nav-links nav-mobile-hide">
+      <a href="#rutina">Rutina</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#historias">Historias</a>
+    </div>
+    <a href="#empezar" class="nav-cta">Empezar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-kicker">Rutina de 8 semanas · Sin gimnasio complicado</div>
+      <h1>Tu cuerpo cambia cuando <em>tu rutina</em> deja de ser una excusa.</h1>
+      <p class="lead">Un plan de entrenamiento y hábitos diarios pensado para gente con trabajo, hijos y poco tiempo — no para atletas de laboratorio.</p>
+      <div class="hero-actions">
+        <a href="#empezar" class="btn-primary">Empezar mi plan</a>
+        <a href="#rutina" class="btn-ghost">Ver la semana tipo</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="num">45</div>
+          <div class="label">min por sesión</div>
+        </div>
+        <div>
+          <div class="num">4</div>
+          <div class="label">días de entreno</div>
+        </div>
+        <div>
+          <div class="num">8</div>
+          <div class="label">semanas al cambio</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="board">
+      <div class="board-head">
+        <h3>Hoy — Piernas</h3>
+        <span>Semana 3</span>
+      </div>
+      <div class="board-row"><span class="ex">Sentadilla trasera</span><span class="set">4 × 8</span></div>
+      <div class="board-row"><span class="ex">Zancadas caminando</span><span class="set">3 × 12</span></div>
+      <div class="board-row"><span class="ex">Peso muerto rumano</span><span class="set">4 × 10</span></div>
+      <div class="board-row"><span class="ex">Elevación de talones</span><span class="set">3 × 15</span></div>
+      <div class="board-row"><span class="ex">Caminata inclinada</span><span class="set">10 min</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="rutina">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Una semana real, no una promesa</h2>
+      <p>Cuatro días de fuerza, uno de movimiento ligero, dos de descanso activo. Así es como se ve el equilibrio, no el agotamiento.</p>
+    </div>
+
+    <div class="week">
+      <div class="day">
+        <span class="d-name">Lun</span>
+        <div class="bar" style="height:70px"></div>
+        <div class="focus">Tren superior</div>
+        <div class="mins">45 min</div>
+      </div>
+      <div class="day">
+        <span class="d-name">Mar</span>
+        <div class="bar" style="height:100px"></div>
+        <div class="focus">Piernas</div>
+        <div class="mins">50 min</div>
+      </div>
+      <div class="day rest">
+        <span class="d-name">Mié</span>
+        <div class="bar" style="height:30px"></div>
+        <div class="focus">Caminata + movilidad</div>
+        <div class="mins">20 min</div>
+      </div>
+      <div class="day">
+        <span class="d-name">Jue</span>
+        <div class="bar" style="height:60px"></div>
+        <div class="focus">Espalda y core</div>
+        <div class="mins">40 min</div>
+      </div>
+      <div class="day">
+        <span class="d-name">Vie</span>
+        <div class="bar" style="height:85px"></div>
+        <div class="focus">Full body</div>
+        <div class="mins">50 min</div>
+      </div>
+      <div class="day rest">
+        <span class="d-name">Sáb</span>
+        <div class="bar" style="height:25px"></div>
+        <div class="focus">Actividad libre</div>
+        <div class="mins">30 min</div>
+      </div>
+      <div class="day rest">
+        <span class="d-name">Dom</span>
+        <div class="bar" style="height:15px"></div>
+        <div class="focus">Descanso</div>
+        <div class="mins">—</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pilares" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>El entrenamiento es solo un pilar</h2>
+      <p>Lo que pasa fuera del gimnasio decide si el cambio se sostiene o se apaga en tres semanas.</p>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-figure">
+        <div class="pillar-num">7<sup>h</sup></div>
+        <h3>Dormir es entrenar</h3>
+        <p>El músculo se repara mientras duermes, no mientras levantas peso. Siete horas mínimo, misma hora cada noche.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="pillar">
+      <div></div>
+      <div class="pillar-figure">
+        <div class="pillar-num">2<sup>L</sup></div>
+        <h3>Hidratación sin obsesión</h3>
+        <p>No hace falta contar cada trago. Dos litros repartidos en el día es la base que sostiene energía y digestión.</p>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-figure">
+        <div class="pillar-num">80<sup>g</sup></div>
+        <h3>Proteína en cada comida</h3>
+        <p>No se trata de dietas estrictas. Un puñado de proteína en cada plato mantiene la saciedad y protege el músculo.</p>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="pillar">
+      <div></div>
+      <div class="pillar-figure">
+        <div class="pillar-num">10<sup>min</sup></div>
+        <h3>Mente antes que músculo</h3>
+        <p>Diez minutos de respiración o silencio antes de entrenar cambian cómo se siente el resto de la sesión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="historias">
+  <div class="wrap">
+    <div class="quote">
+      <p>Llevaba dos años apuntándome y dándome de baja del gimnasio. Lo que cambió no fue la rutina — fue que por fin encajaba en mi semana real.</p>
+      <div class="who">Marta R. — 8 semanas en el plan</div>
+    </div>
+  </div>
+</section>
+
+<section id="empezar" class="cta">
+  <div class="wrap">
+    <h2>Tu primera semana empieza el lunes</h2>
+    <p>Sin cuotas de por vida, sin equipo especial. Solo un plan que puedes mantener.</p>
+    <a href="#" class="btn-primary">Quiero mi plan de 8 semanas</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>FUERZA · DIARIA</div>
+    <div>Página de ejemplo — plantilla de demostración</div>
+  </div>
+</footer>
+
+</body>
+</html>
